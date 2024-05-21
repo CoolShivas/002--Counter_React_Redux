@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import styles from "./Buttons.module.css";
 import { useDispatch } from "react-redux";
 
 const Buttons = () => {
+
+    const inputValue = useRef();
 
     const dispatch = useDispatch();
 
@@ -11,6 +14,17 @@ const Buttons = () => {
 
     const handlerOnDecrement = () => {
         dispatch({ type: "DECREMENT" })
+    };
+
+    const handlerOnAddBtn = () => {
+        dispatch({ type: "ADDITION", payload: { num: Number(inputValue.current.value) } })
+        // Here, Number(inputValue.current.value) will convert it into number format whereas if we are going to use num : inputValue.current.value like this then it will give a string only;
+        inputValue.current.value = "";
+    };
+
+    const handlerOnSubtractBtn = () => {
+        dispatch({ type: "SUBTRACTION", payload: { num: Number(inputValue.current.value) } })
+        inputValue.current.value = "";
     };
 
 
@@ -31,15 +45,17 @@ const Buttons = () => {
 
             <div className={styles.input_field_div}>
 
-                <input type="text" className="form-control btn-lg" placeholder="enter here" />
+                <input type="text" className="form-control btn-lg" placeholder="enter here" ref={inputValue} />
 
                 <div className={styles.btn_actions}>
                     <button type="button" className="btn btn-info btn-lg px-4"
+                        onClick={handlerOnAddBtn}
                     >
                         Add
                     </button>
 
                     <button type="button" className="btn btn-warning btn-lg px-4"
+                        onClick={handlerOnSubtractBtn}
                     >
                         Subtract
                     </button>
