@@ -1,0 +1,22 @@
+.buttons_container {
+  /* background-color: orange; */
+}
+
+.add_subtract_div {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+.input_field_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.btn_actions {
+  /* background-color: orange; */
+  display: flex;
+}
