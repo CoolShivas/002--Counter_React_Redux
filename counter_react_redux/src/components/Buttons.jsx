@@ -27,6 +27,9 @@ const Buttons = () => {
         inputValue.current.value = "";
     };
 
+    const handlerOnPrivacyToggle = () => {
+        dispatch({ type: "PRIVACY_TOGGLE" })
+    };
 
     return (
         <div className={styles.buttons_container}>
@@ -41,11 +44,18 @@ const Buttons = () => {
                 >
                     -1
                 </button>
+
+                <button type="button" className="btn btn-dark btn-lg px-4"
+                    onClick={handlerOnPrivacyToggle}
+                >
+                    Private
+                </button>
+
             </div>
 
             <div className={styles.input_field_div}>
 
-                <input type="text" className="form-control btn-lg" placeholder="enter here" ref={inputValue} />
+                <input type="text" className="form-control btn-lg" placeholder="enter number here" ref={inputValue} />
 
                 <div className={styles.btn_actions}>
                     <button type="button" className="btn btn-info btn-lg px-4"
